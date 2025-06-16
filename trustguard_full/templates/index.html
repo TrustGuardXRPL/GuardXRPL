@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TrustGuard Admin</title>
+</head>
+<body>
+    <h1>🛡️ TrustGuard Admin Panel</h1>
+
+    <h2>Check XRPL Token</h2>
+    <form action="/check" method="POST">
+        Issuer Address: <input type="text" name="issuer" required>
+        <button type="submit">Check</button>
+    </form>
+
+    <h2>Report Token</h2>
+    <form action="/report" method="POST">
+        Token Name: <input type="text" name="token" required>
+        Reason: <input type="text" name="reason" required>
+        <button type="submit">Report</button>
+    </form>
+
+    <h2>Reported Tokens</h2>
+    <ul>
+        {% for r in reports %}
+        <li><b>{{ r.token }}</b>: {{ r.reason }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
